@@ -1,6 +1,6 @@
 <!-- 2-way binding -->
-<input [formControl]="control" type="text" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
-   duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400" placeholder="Enter Name" />
+<input [formControl]="control" [type]="type" class="block w-full py-1.5 px-3 text-gray-200 border border-gray-400 transition
+   duration-500 focus:outline-none rounded bg-transparent focus:border-indigo-400" [placeholder]="placeholder" />
 <ng-container *ngIf="control.touched && control.dirty">
     <p *ngIf="control.errors?.required" class="text-red-400">
         Field is required
@@ -9,5 +9,11 @@
     <p *ngIf="control.errors?.minlength" class="text-red-400">
         The value you entered is {{ control.errors?.minlength.actualLength}} characters long.
         It must be at least {{ control.errors?.minlength.requiredLength }} characters long.
+    </p>
+    <p class="text-red-400" *ngIf="control.errors?.email">
+        You must enter a valid email...
+    </p>
+    <p class="text-red-400" *ngIf="control.errors?.min">
+        Age must me above 16 
     </p>
 </ng-container>
